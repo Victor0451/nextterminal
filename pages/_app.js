@@ -1,10 +1,19 @@
 import App from "next/app";
 import "../css/styles.css";
 
-const MyApp = (props) => {
-  const { Component, pageProps } = props;
 
-  return <Component {...pageProps} />;
-};
+class MyApp extends App {
+
+  render() {
+
+    const { Component, pageProps } = this.props;
+    
+    return (
+
+      <Component {...pageProps} />
+
+    );
+  }
+}
 
 export default MyApp;

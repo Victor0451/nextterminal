@@ -1,23 +1,24 @@
-import React from "react";
+
+import React from 'react';
 
 const RedirectToLogin = () => {
   return (
-    <div className="container ">
-      <div className=" border border-dark p-4 mt-4 mb-4 ">
+    <div className="container  ">
+      <div className=" border border-dark p-4 mt-4 mb-4 jumbotron">
         <h1 className="text-center">
           <strong>
             <u>
               No estas logueado, debes iniciar session para acceder al sistema
-            </u>
+        </u>
           </strong>
         </h1>
 
-        <img src="/img/logerr.jpeg" className="logerr p-4"></img>
+        {/* <img src="/img/logerr.jpeg" className="logerr p-4"></img> */}
 
         <div className="mt-4 mb-4 d-flex justify-content-center">
           <a href="/" className="btn btn-primary">
             Iniciar Session
-          </a>
+      </a>
         </div>
       </div>
     </div>
@@ -25,3 +26,5 @@ const RedirectToLogin = () => {
 };
 
 export default RedirectToLogin;
+
+

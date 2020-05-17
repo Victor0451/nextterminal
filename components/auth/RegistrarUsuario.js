@@ -20,16 +20,17 @@ const RegistrarUsuario = ({
 }) => {
   return (
     <div className="container">
-      <h1 className="mt-4 mb-4">
-        <strong>
-          <u>Registro de Usuarios</u>
-        </strong>
-      </h1>
+
 
       <form
-        className=" mt-4 border border-dark p-4 jumbotron"
+        className=" mt-4 border border-dark p-4 alert alert-primary"
         onSubmit={handleSubmit}
       >
+        <h2 className="mb-4">
+          <strong>
+            <u>Registro de Usuarios</u>
+          </strong>
+        </h2>
         <div className="row">
           <div className="form-group col-md-4">
             <label>

@@ -5,24 +5,25 @@ import EstadoSelect from "react-select";
 import { perfil, estado } from "../../arrays/array";
 
 const ModificarUsuario = ({
-  handleChange,
-  handleSubmit,
-  handleBlur,
-  nombre,
-  apellido,
-  usuario,
-  contrasena,
-  errores,
-  error,
+  user,
+  usuarioRef,
+  contrasenaRef,
+  nombreRef,
+  apellidoRef,
+  perfilRef,
+  estadoRef,
   handleSelect,
   comboPer,
   comboEst,
+  error,
+  errores,
+  editRegistro
 }) => {
   return (
     <div className="container">
       <form
-        className=" mt-4 border border-dark p-4 jumbotron"
-        onSubmit={handleSubmit}
+        className=" mt-4 border border-dark p-4 alert alert-primary"
+        onSubmit={editRegistro}
       >
         <h2 className=" mb-4">
           <strong>
@@ -40,15 +41,14 @@ const ModificarUsuario = ({
               className="form-control"
               placeholder="Usuario"
               name="usuario"
-              value={usuario}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              defaultValue={user.usuario}
+              ref={usuarioRef}
             />
-            {errores.usuario && (
+            {/* {errores.usuario && (
               <div className="mt-2 form-group  alert alert-danger">
                 {errores.usuario}
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="form-group col-md-4">
@@ -60,15 +60,17 @@ const ModificarUsuario = ({
               className="form-control"
               placeholder="Contrasena"
               name="contrasena"
-              value={contrasena}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              defaultValue={user.contrasena}
+              ref={contrasenaRef}
+
+
             />
-            {errores.contrasena && (
+            {/* {errores.contrasena && (
               <div className="mt-2 form-group  alert alert-danger">
                 {errores.contrasena}
-              </div>
+              </div> 
             )}
+            */}
           </div>
 
           <div className="form-group col-md-4">
@@ -80,15 +82,15 @@ const ModificarUsuario = ({
               className="form-control"
               placeholder="Nombre"
               name="nombre"
-              value={nombre}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              defaultValue={user.nombre}
+              ref={nombreRef}
+
             />
-            {errores.nombre && (
+            {/* {errores.nombre && (
               <div className="mt-2 form-group  alert alert-danger">
                 {errores.nombre}
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="form-group col-md-4">
@@ -100,25 +102,26 @@ const ModificarUsuario = ({
               className="form-control"
               placeholder="Apellido"
               name="apellido"
-              value={apellido}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              defaultValue={user.apellido}
+              ref={apellidoRef}
+
             />
-            {errores.apellido && (
+            {/* {errores.apellido && (
               <div className="mt-2 form-group  alert alert-danger">
                 {errores.apellido}
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="form-group col-md-4">
             <label>
-              <strong> Perfil </strong>
+              <strong ref={perfilRef}> Perfil: {user.perfil === 1 ? (<>Administrador</>) : user.perfil === 2 ? (<>Operador</>) : null} </strong>
             </label>
             <PerfilSelect
               options={perfil}
               placeholder={"Perfil"}
               onChange={(value) => handleSelect(value, "perfil")}
+
             />
 
             {comboPer && (
@@ -130,12 +133,14 @@ const ModificarUsuario = ({
 
           <div className="form-group col-md-4">
             <label>
-              <strong> Estado </strong>
+              <strong ref={estadoRef}> Estado: {user.estado === 1 ? (<>Activo</>) : user.estado === 2 ? (<>Inactivo</>) : null} </strong>
             </label>
             <EstadoSelect
               options={estado}
               placeholder={"Estado"}
               onChange={(value) => handleSelect(value, "estado")}
+              ref={estadoRef}
+
             />
 
             {comboEst && (
@@ -148,7 +153,7 @@ const ModificarUsuario = ({
             <input
               type="submit"
               className="btn btn-primary  btn-block mt-4"
-              value="Registrar"
+              value="Modificar"
             />
 
             {error && (

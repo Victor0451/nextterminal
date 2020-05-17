@@ -2,25 +2,29 @@ import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
 import ModificarUsuario from "../../components/auth/ModificarUsuario";
 import BuscarUsuario from "../../components/auth/BuscarUsuario";
-
 import axios from "axios";
 import RedirectToLogin from "../../components/auth/RedirectToLogin";
 import jsCookie from "js-cookie";
 import toastr from "toastr";
 import Router from "next/router";
 
-// Validaciones
-import useValidacion from "../../hooks/useValidacion";
-import validarRegistro from "../../validacion/validarRegistro";
 
-const STATE_INICIAL = {
-  usuario: "",
-  contrasena: "",
-  nombre: "",
-  apellido: "",
-};
+
+
 
 const editar = () => {
+
+
+
+  let userRef = React.createRef()
+  let usuarioRef = React.createRef()
+  let contrasenaRef = React.createRef()
+  let nombreRef = React.createRef()
+  let apellidoRef = React.createRef()
+  let perfilRef = React.createRef()
+  let estadoRef = React.createRef()
+
+
   const [error, guardarError] = useState(false);
   const [perfil, guardarPerfil] = useState(null);
   const [estado, guardarEstado] = useState(null);
@@ -39,90 +43,101 @@ const editar = () => {
     }
   };
 
-  const {
-    valores,
-    errores,
-    handleChange,
-    handleSubmit,
-    handleBlur,
-  } = useValidacion(STATE_INICIAL, validarRegistro, crearRegistro);
 
-  const { nombre, apellido, usuario, contrasena } = valores;
 
-const buscarUsuario = () =>{
-    
+  const buscarUsuario = async (e) => {
+    e.preventDefault()
 
-}
+    let id = userRef.current.value
+    if (id === '') {
+      console.log("id esta vacio");
+    } else {
+      await axios.get(`http://190.231.32.232:5005/api/usuario/usuario/${id}`).then(res => {
+        const user = res.data
+        console.log(user);
+        guardarUser(user)
+      }).catch(error => {
+        console.log(error);
+      })
+    }
 
-  async function crearRegistro() {
-    //   try {
-    //     const config = {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     };
-    //     //Req body
-    //     const body = JSON.stringify({
-    //       usuario,
-    //       contrasena,
-    //       nombre,
-    //       apellido,
-    //       perfil,
-    //       estado,
-    //     });
-    //     if (estado === null || perfil === null) {
-    //       let comboEst = "Debes elegir el estado";
-    //       guardarEst(comboEst);
-    //       let comboPer = "Debes elegir el perfil";
-    //       guardarPer(comboPer);
-    //     } else {
-    //       await axios.post(
-    //         "http://190.231.32.232:5005/api/usuario/nuevousuario",
-    //         body,
-    //         config
-    //       );
-    //       console.log("Usuario creado exitosamente");
-    //       toastr.success("El usuario fue creado con exito", "ATENCION");
-    //       setTimeout(() => {
-    //         Router.reload();
-    //       }, 1500);
-    //     }
-    //   } catch (error) {
-    //     console.log(error.response.data, error.response.status, "REGISTER_FAIL");
-    //     guardarError(error.response.data.msg);
-    //   }
+
+
+
   }
 
+  const editarRegistro = async (e) => {
+    e.preventDefault()
+
+    const UsuarioEdit = {
+      id_usuario: user.id_usuario,
+      usuario: usuarioRef.current.value,
+      contrasena: contrasenaRef.current.value,
+      nombre: nombreRef.current.value,
+      apellido: apellidoRef.current.value,
+      perfil: perfil,
+      estado: estado
+    }
+
+    if (perfil === null) {
+
+      UsuarioEdit.perfil = user.perfil
+    } else {
+      UsuarioEdit.perfil = perfil
+    }
+
+    if (estado === null) {
+      UsuarioEdit.estado = user.estado
+    } else {
+      UsuarioEdit.estado = estado
+    }
+
+    await axios.put(`http://190.231.32.232:5005/api/usuario/editarusuario/${user.id_usuario}`, UsuarioEdit).then(res => {
+      toastr.success("El usuario se modifico con exito", "ATENCION")
+      setTimeout(() => {
+        Router.reload()
+      }, 1500);
+    }).catch(error => {
+      console.log(error);
+      toastr.error("Ocurrio un error, la operacion no se ralizo", "ATENCION")
+
+    })
+
+    console.log(UsuarioEdit);
 
 
-  let token = jsCookie.get("token");
+
+  }
+
+  let token = jsCookie.get('token')
 
   return (
     <Layout>
-      {!token ? (
-        <RedirectToLogin />
-      ) : (
+      {!token ? null : (
         <>
-          <BuscarUsuario usuario={usuario} usererror={usererror} />
+          <BuscarUsuario userRef={userRef} buscarUsuario={buscarUsuario} usererror={usererror} />
 
           {user === null ? null : (
             <ModificarUsuario
-              nombre={nombre}
-              apellido={apellido}
-              usuario={usuario}
-              contrasena={contrasena}
-              errores={errores}
-              handleChange={handleChange}
+              user={user}
+              usuarioRef={usuarioRef}
+              contrasenaRef={contrasenaRef}
+              nombreRef={nombreRef}
+              apellidoRef={apellidoRef}
+              perfilRef={perfilRef}
+              estadoRef={estadoRef}
               handleSelect={handleSelect}
               comboPer={comboPer}
               comboEst={comboEst}
-              handleSubmit={handleSubmit}
-              handleBlur={handleBlur}
               error={error}
+
+              editRegistro={editarRegistro}
             />
           )}
         </>
       )}
+
+
     </Layout>
   );
 };

@@ -1,26 +1,30 @@
 import React from "react";
 
-import Navbar from "../navbar/Navbar" ;
+import Navbar from "../navbar/Navbar";
 import Head from "next/head";
 
 const Layout = (props) => {
   return (
-    <div className="">
+    <div>
       <Head>
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossOrigin="anonymous"
-        ></link>
+        ></link> */}
+
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-smnSwzHqW1zKbeuSMsAM/fMQpkk7HY11LuHiwT8snL/W2QBoZtVCT4H5x1CEcJCs" crossorigin="anonymous"></link>
+
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css"
         />
         <title>WERCHOW - SGI</title>
       </Head>
+
       <Navbar />
-      <main>{props.children}</main>
+      <main id="root">{props.children}</main>
       <script
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

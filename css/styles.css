@@ -1,8 +1,9 @@
 body {
-  background: lightblue;
+  background: whitesmoke;
 }
 
 /* WERCHOW && MUTUAL LOGO */
+
 .werchowlogo {
   width: 150px;
   height: 25px;
@@ -19,7 +20,7 @@ body {
   position: relative;
 }
 
-.dropdown-submenu > .dropdown-menu {
+.dropdown-submenu>.dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: -6px;
@@ -29,11 +30,11 @@ body {
   border-radius: 0 6px 6px 6px;
 }
 
-.dropdown-submenu:hover > .dropdown-menu {
+.dropdown-submenu:hover>.dropdown-menu {
   display: block;
 }
 
-.dropdown-submenu > a:after {
+.dropdown-submenu>a:after {
   display: block;
   content: " ";
   float: right;
@@ -47,7 +48,7 @@ body {
   margin-right: -10px;
 }
 
-.dropdown-submenu:hover > a:after {
+.dropdown-submenu:hover>a:after {
   border-left-color: #fff;
 }
 
@@ -55,7 +56,7 @@ body {
   float: none;
 }
 
-.dropdown-submenu.pull-left > .dropdown-menu {
+.dropdown-submenu.pull-left>.dropdown-menu {
   left: -100%;
   margin-left: 10px;
   -webkit-border-radius: 6px 0 6px 6px;
@@ -126,8 +127,7 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.ReactTable .rt-thead.-filters input,
-.ReactTable .rt-thead.-filters select {
+.ReactTable .rt-thead.-filters input, .ReactTable .rt-thead.-filters select {
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
   padding: 5px 7px;
@@ -149,8 +149,7 @@ body {
   text-align: center;
 }
 
-.ReactTable .rt-thead .rt-th,
-.ReactTable .rt-thead .rt-td {
+.ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
   padding: 5px 5px;
   line-height: normal;
   position: relative;
@@ -159,23 +158,19 @@ body {
   box-shadow: inset 0 0 0 0 transparent;
 }
 
-.ReactTable .rt-thead .rt-th.-sort-asc,
-.ReactTable .rt-thead .rt-td.-sort-asc {
+.ReactTable .rt-thead .rt-th.-sort-asc, .ReactTable .rt-thead .rt-td.-sort-asc {
   box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.6);
 }
 
-.ReactTable .rt-thead .rt-th.-sort-desc,
-.ReactTable .rt-thead .rt-td.-sort-desc {
+.ReactTable .rt-thead .rt-th.-sort-desc, .ReactTable .rt-thead .rt-td.-sort-desc {
   box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.6);
 }
 
-.ReactTable .rt-thead .rt-th.-cursor-pointer,
-.ReactTable .rt-thead .rt-td.-cursor-pointer {
+.ReactTable .rt-thead .rt-th.-cursor-pointer, .ReactTable .rt-thead .rt-td.-cursor-pointer {
   cursor: pointer;
 }
 
-.ReactTable .rt-thead .rt-th:last-child,
-.ReactTable .rt-thead .rt-td:last-child {
+.ReactTable .rt-thead .rt-th:last-child, .ReactTable .rt-thead .rt-td:last-child {
   border-right: 0;
 }
 
@@ -200,8 +195,7 @@ body {
   border-right-color: #f7f7f7;
 }
 
-.ReactTable .rt-thead .rt-header-pivot:after,
-.ReactTable .rt-thead .rt-header-pivot:before {
+.ReactTable .rt-thead .rt-header-pivot:after, .ReactTable .rt-thead .rt-header-pivot:before {
   left: 100%;
   top: 50%;
   border: solid transparent;
@@ -286,8 +280,7 @@ body {
   display: inline-flex;
 }
 
-.ReactTable .rt-th,
-.ReactTable .rt-td {
+.ReactTable .rt-th, .ReactTable .rt-td {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 0px;
   flex: 1 0 0;
@@ -299,8 +292,7 @@ body {
   transition-property: width, min-width, padding, opacity;
 }
 
-.ReactTable .rt-th.-hidden,
-.ReactTable .rt-td.-hidden {
+.ReactTable .rt-th.-hidden, .ReactTable .rt-td.-hidden {
   width: 0 !important;
   min-width: 0 !important;
   padding: 0 !important;
@@ -396,8 +388,7 @@ body {
   border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-.ReactTable .-pagination input,
-.ReactTable .-pagination select {
+.ReactTable .-pagination input, .ReactTable .-pagination select {
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
   padding: 5px 7px;
@@ -435,8 +426,7 @@ body {
   color: #fff;
 }
 
-.ReactTable .-pagination .-previous,
-.ReactTable .-pagination .-next {
+.ReactTable .-pagination .-previous, .ReactTable .-pagination .-next {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -513,7 +503,7 @@ body {
   pointer-events: none;
 }
 
-.ReactTable .-loading > div {
+.ReactTable .-loading>div {
   position: absolute;
   display: block;
   text-align: center;
@@ -533,13 +523,12 @@ body {
   pointer-events: all;
 }
 
-.ReactTable .-loading.-active > div {
+.ReactTable .-loading.-active>div {
   -webkit-transform: translateY(50%);
   transform: translateY(50%);
 }
 
-.ReactTable .rt-resizing .rt-th,
-.ReactTable .rt-resizing .rt-td {
+.ReactTable .rt-resizing .rt-th, .ReactTable .rt-resizing .rt-td {
   transition: none !important;
   cursor: col-resize;
   -webkit-user-select: none;
@@ -556,11 +545,10 @@ body {
   text-align: center;
 }
 
-.spinner > div {
+.spinner>div {
   width: 18px;
   height: 18px;
   background-color: #333;
-
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -578,9 +566,7 @@ body {
 }
 
 @-webkit-keyframes sk-bouncedelay {
-  0%,
-  80%,
-  100% {
+  0%, 80%, 100% {
     -webkit-transform: scale(0);
   }
   40% {
@@ -589,9 +575,7 @@ body {
 }
 
 @keyframes sk-bouncedelay {
-  0%,
-  80%,
-  100% {
+  0%, 80%, 100% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
