@@ -8,8 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "js-cookie": "^2.2.1",
     "next": "9.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-select": "^3.1.0",
+    "react-table": "^7.0.6",
+    "toastr": "^2.1.4"
   }
 }
